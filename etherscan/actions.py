@@ -1,19 +1,7 @@
-from enum import Enum
+import pydantic
 
 
-class Modules(Enum):
-    account: str = "account"
-    contract: str = "contract"
-    transaction: str = "transaction"
-    block: str = "block"
-    logs: str = "logs"
-    proxy: str = "proxy"
-    token: str = "token"
-    gastracker: str = "gastracker"
-    stats: str = "stats"
-
-
-class Accounts(Enum):
+class Accounts(pydantic.BaseModel):
     balance: str = "balance"
     balance_multi: str = "balancemulti"
     tx_list: str = "txlist"
@@ -31,28 +19,28 @@ class Accounts(Enum):
     address_token_nft_inventory: str = "addresstokennftinventory"
 
 
-class Contracts(Enum):
+class Contracts(pydantic.BaseModel):
     get_abi: str = "getabi"
     get_source_code: str = "getsourcecode"
     get_contract_creation: str = "getcontractcreation"
 
 
-class Transactions(Enum):
+class Transactions(pydantic.BaseModel):
     get_status: str = "getstatus"
     get_tx_receipt_status: str = "gettxreceiptstatus"
 
 
-class Blocks(Enum):
+class Blocks(pydantic.BaseModel):
     get_block_reward: str = "getblockreward"
     get_block_countdown: str = "getblockcountdown"
     get_block_no_by_time: str = "getblocknobytime"
 
 
-class Logs(Enum):
+class Logs(pydantic.BaseModel):
     get_logs: str = "getLogs"
 
 
-class Proxy(Enum):
+class Proxy(pydantic.BaseModel):
     eth_block_number: str = "eth_blockNumber"
     eth_get_block_by_number: str = "eth_getBlockByNumber"
     eth_get_uncle_by_block_number_and_index: str = "eth_getUncleByBlockNumberAndIndex"
@@ -74,14 +62,14 @@ class Proxy(Enum):
     eth_get_storage_at: str = "eth_getStorageAt"
 
 
-class Tokens(Enum):
+class Tokens(pydantic.BaseModel):
     pass
 
 
-class GasTracker(Enum):
+class GasTracker(pydantic.BaseModel):
     gasestimate: str = "gasestimate"
     gasoracle: str = "gasoracle"
 
 
-class Stats(Enum):
+class Stats(pydantic.BaseModel):
     pass
