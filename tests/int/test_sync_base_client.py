@@ -12,9 +12,11 @@ def etherscan_client():
 
 
 @pytest.mark.parametrize(
-    "params,status,message,status_code",
+    "module,action,params,status,message,status_code",
     [
         (
+            "account",
+            "balance",
             {
                 "module": "account",
                 "action": "balance",
@@ -26,26 +28,31 @@ def etherscan_client():
             200,
         ),
         (
+            "block",
+            "getblockreward",
             {
-                "module": "fake",
-                "action": "balance",
-                "address": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",
-                "tag": "latest",
+                "module": "block",
+                "action": "getblockreward",
+                "blockno": "2165403",
             },
-            "0",
-            "NOTOK",
+            "1",
+            "OK",
             200,
         ),
     ],
 )
 def test_api_call(
     etherscan_client: SyncBaseClient,
+    module: str,
+    action: str,
     params: dict,
     status: str,
     message: str,
     status_code: int,
 ):
-    response = etherscan_client.api_call(params=params)
+    response = etherscan_client.api_call(module=module, action=action, params=params)
     assert response.status_code == status_code
     assert response.body.status == status
     assert response.body.message == message
+    assert response.module == module
+    assert response.action == action
