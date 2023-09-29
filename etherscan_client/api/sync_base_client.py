@@ -4,9 +4,8 @@
 import logging
 
 import requests
-
-from etherscan import url
-from etherscan.response import EtherscanResponse, EtherscanResult
+import url
+from response import EtherscanResponse, EtherscanResult
 
 
 class SyncBaseClient:

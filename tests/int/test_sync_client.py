@@ -1,7 +1,7 @@
 import pytest
 
-from etherscan import url
-from etherscan.client import sync_client
+from etherscan_client import sync_client
+from etherscan_client.api import url
 
 
 @pytest.fixture(scope="module")

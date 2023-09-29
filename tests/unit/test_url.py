@@ -1,6 +1,6 @@
 import pytest
 
-from etherscan import url
+from etherscan_client.api import url
 
 
 @pytest.mark.parametrize(
